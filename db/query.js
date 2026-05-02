@@ -32,8 +32,75 @@ async function findUserByUsername(username) {
     return user;
 }
 
+async function createFolderForUserId(user_id, folder_name) {
+    const folder = await prisma.folder.create({
+        data: {
+            folder_name: folder_name,
+            user_id: user_id,
+        }
+    })
+    console.log("Created folder " + folder_name);
+    return folder;
+}
+
+async function getFoldersForUserById(user_id) {
+    const folders = await prisma.folder.findMany({
+        where: {
+            user_id: user_id,
+        }
+    })
+    return folders;
+}
+
+async function getFolderForId(folder_id) {
+    const folder = await prisma.folder.findUnique({
+        where: {
+            id: folder_id,
+        }
+    })
+    return folder;
+}
+
+async function deleteFolderForId(folder_id) {
+    const folder = await prisma.folder.delete({
+        where: {
+            id: folder_id,
+        }
+    })
+    console.log("deleted fodler" + folder.folder_name);
+    return folder;
+}
+
+async function deleteFolderForId(folder_id) {
+    const folder = await prisma.folder.delete({
+        where: {
+            id: folder_id,
+        }
+    })
+    console.log("deleted fodler" + folder.folder_name);
+    return folder;
+}
+
+async function updateFolderForId(folder_id, updatedFolderName) {
+    const folder = await prisma.folder.update({
+        where: {
+            id: folder_id,
+        },
+        data: {
+            folder_name: updatedFolderName,
+        }
+    })
+    console.log("deleted fodler" + folder.folder_name);
+    return folder;
+}
+
 module.exports = {
     addUser,
     findUserByID,
     findUserByUsername,
+    createFolderForUserId,
+    getFoldersForUserById,
+    getFolderForId,
+    deleteFolderForId,
+    updateFolderForId,
 }

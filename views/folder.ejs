@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=folder.name%>></title>
+  </head>
+
+  <body>
+    <a href="/log-out">Logout</a>
+    <h1><%=folder.folder_name%></h1>
+    <a href="/folder/delete-folder/<%= folder.id%>">Delete this folder</a>
+    <a href="/folder/update-folder/<%= folder.id%>">Update folder</a>
+  </body>
+</html>

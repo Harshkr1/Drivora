@@ -51,13 +51,24 @@ async function logIn(request, response, next) {
     })(request, response, next);
 }
 
+async function getUploadPage(request, response) {
+    if (!request.isAuthenticated()) {
+        return response.render("log-in");
+    }
+    return response.render("upload");
+}
+
 function logOut(request, response, next) {
     request.logout((err) => {
         if (err) {
             return next(err);
         }
-        response.redirect("/");
+        return response.redirect("/");
     });
+}
+
+async function uploadFile(request, response) {
+    return response.send("File saved to filesystem");
 }
 
 module.exports = {
@@ -67,4 +78,6 @@ module.exports = {
     logIn,
     showIndexPage,
     logOut,
+    getUploadPage,
+    uploadFile,
 }

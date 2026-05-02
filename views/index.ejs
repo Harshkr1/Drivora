@@ -12,6 +12,8 @@
   <% if (user) { %>
     <h2>Welcome</h2>
     <p><%= user.first_name %> <%= user.last_name %></p>
+        <a href="/log-out">Logout</a>
+        <a href="/folder">folders</a>
   <% } else { %>
     <p>Please login</p>
     <a href="/log-in">Login</a>

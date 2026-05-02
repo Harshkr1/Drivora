@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const { indexRouter } = require("./routers/indexRouter.js");
+const { folderRouter } = require("./routers/folderRouter.js");
 const session = require("express-session");
 require("dotenv").config();
 const passport = require("passport");
@@ -46,6 +47,8 @@ app.use((req, res, next) => {
 });
 
 app.use("/", indexRouter);
+app.use("/folder", folderRouter);
+
 app.listen(PORT, (error) => {
     if (error) {
         throw new error();

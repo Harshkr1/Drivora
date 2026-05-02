@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>folders</title>
+  </head>
+
+  <body>
+    <a href="/log-out">Logout</a>
+    <a href="/folder/create-folder">create a folder</a>
+   <%if(folders.length==0){%>
+        <h1> No folders Created ! Please create A Folder</h1>
+    <%}else{%>
+        <%for(folder of folders){%>
+            <a href="/folder?id=<%=folder.id%>"><h1><%=folder.folder_name%></h1></a>
+        <%}%>
+    <%}%>
+  </body>
+</html>

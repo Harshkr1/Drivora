@@ -16,15 +16,24 @@ datasource db {
 }
 
 model user {
-  id         Int     @id @default(autoincrement())
-  first_name String  @db.VarChar(200)
-  last_name  String? @db.VarChar(200)
-  username   String  @unique @db.VarChar(255)
+  id         Int      @id @default(autoincrement())
+  first_name String   @db.VarChar(200)
+  last_name  String?  @db.VarChar(200)
+  username   String   @unique @db.VarChar(255)
   password   String
+  folders    folder[]
 }
 
 model Session {
   id        String   @id
   sid       String   @unique
+  data      String
   expiresAt DateTime
+}
+
+model folder {
+  id          Int    @id @default(autoincrement())
+  folder_name String @db.VarChar(200)
+  user        user   @relation(fields: [user_id], references: [id])
+  user_id     Int
 }
