@@ -94,6 +94,29 @@ async function updateFolderForId(folder_id, updatedFolderName) {
     return folder;
 }
 
+async function uploadFile(fileName, orignalName, folderId, destination, size) {
+    const file = await prisma.file.create({
+        data: {
+            file_name: fileName,
+            file_orignal_name: orignalName,
+            folder_id: folderId,
+            url: destination,
+            size: size,
+        }
+    })
+    console.log("added file" + file);
+    return file;
+}
+
+async function getFilesForFolder(folderId) {
+    const files = await prisma.file.findMany({
+        where: {
+            folder_id: folderId,
+        }
+    })
+    return files;
+}
+
 module.exports = {
     addUser,
     findUserByID,
@@ -103,4 +126,6 @@ module.exports = {
     getFolderForId,
     deleteFolderForId,
     updateFolderForId,
+    uploadFile,
+    getFilesForFolder,
 }

@@ -36,4 +36,16 @@ model folder {
   folder_name String @db.VarChar(200)
   user        user   @relation(fields: [user_id], references: [id])
   user_id     Int
+  files       file[]
+}
+
+model file {
+  id                Int      @id @default(autoincrement())
+  file_name         String   @db.VarChar(250)
+  file_orignal_name String   @db.VarChar(250)
+  folder            folder   @relation(fields: [folder_id], references: [id])
+  folder_id         Int
+  url               String
+  size              Float
+  created_at        DateTime @default(now())
 }

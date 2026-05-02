@@ -25,7 +25,6 @@ const currentSession = new session({
     )
 });
 
-
 // Defining out LocalStragey which will be called when we will call passport.authenticate method how to check here basically
 const CurrentLocalStrategy = new LocalStrategy(async (username, password, done/* callback function to return result from LocalStrategy */) => {
     try {

@@ -9,7 +9,18 @@
   <body>
     <a href="/log-out">Logout</a>
     <h1><%=folder.folder_name%></h1>
+    <a href="/folder/upload-file/<%= folder.id%>">Upload a file</a>
     <a href="/folder/delete-folder/<%= folder.id%>">Delete this folder</a>
     <a href="/folder/update-folder/<%= folder.id%>">Update folder</a>
+
+    <div>
+        <% if (files.length === 0) { %>
+            <h1>No files in the folder! Please upload a file</h1>
+        <% } else { %>
+            <% for (let file of files) { %>
+                <%- include('./partials/single_item', { file: file }) %>
+            <% } %>
+        <% } %>   
+    </div>
   </body>
 </html>
