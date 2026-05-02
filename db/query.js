@@ -1,37 +1,39 @@
-import { prisma } from "./../lib/prisma";
+const { prisma } = require("../lib/prisma.js");
 
-async function main() {
+async function addUser(firstName, lastName, username, password) {
     const user = await prisma.user.create({
         data: {
-            name: "Alice",
-            email: "alice@prisma.io",
-            posts: {
-                create: {
-                    title: "Hello World",
-                    content: "This is my first post!",
-                    published: true,
-                },
-            },
-        },
-        include: {
-            posts: true,
-        },
-    });
-    console.log("Created user:", user);
-    // Fetch all users with their posts
-    const allUsers = await prisma.user.findMany({
-        include: {
-            posts: true,
-        },
-    });
-    console.log("All users:", JSON.stringify(allUsers, null, 2));
-}
-main()
-    .then(async () => {
-        await prisma.$disconnect();
+            first_name: firstName,
+            last_name: lastName,
+            username: username,
+            password: password,
+        }
     })
-    .catch(async (e) => {
-        console.error(e);
-        await prisma.$disconnect();
-        process.exit(1);
-    });
+    return user;
+}
+
+async function findUserByID(id) {
+    const user = await prisma.user.findUnique({
+        where: {
+            id: id,
+        }
+    })
+    console.log(user);
+    return user;
+}
+
+async function findUserByUsername(username) {
+    const user = await prisma.user.findUnique({
+        where: {
+            username: username,
+        }
+    })
+    console.log(user);
+    return user;
+}
+
+module.exports = {
+    addUser,
+    findUserByID,
+    findUserByUsername,
+}

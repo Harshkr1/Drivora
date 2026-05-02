@@ -11,7 +11,7 @@
 
   <% if (user) { %>
     <h2>Welcome</h2>
-    <p><%= user.name %></p>
+    <p><%= user.first_name %> <%= user.last_name %></p>
   <% } else { %>
     <p>Please login</p>
     <a href="/log-in">Login</a>

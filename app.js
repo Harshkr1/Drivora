@@ -29,12 +29,10 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
     try {
-        const rows = await db.findUserByID(id);
-        if (!rows || rows.length === 0) {
+        const user = await db.findUserByID(id);
+        if (!user) {
             return done(null, false);
         }
-
-        const user = rows[0];
         done(null, user);
     } catch (error) {
         done(error);
