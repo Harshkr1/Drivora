@@ -3,5 +3,7 @@
   <ul>
     <li><%=file.size%></li>
     <li><%=file.created_at %></li>
+    <li><a href="/file/delete-file?id=<%=file.id%>">delete this file</a></li>
+    <li><a href="/file/download-file/<%= file.id %>">download this file</a></li>
   </ul>
 </body>

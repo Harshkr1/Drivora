@@ -117,6 +117,24 @@ async function getFilesForFolder(folderId) {
     return files;
 }
 
+async function getFileForId(file_id) {
+    const file = await prisma.file.findUnique({
+        where: {
+            id: file_id,
+        }
+    })
+    return file;
+}
+
+async function deleteFileForId(file_id) {
+    const file = await prisma.file.delete({
+        where: {
+            id: file_id,
+        }
+    })
+    return file;
+}
+
 module.exports = {
     addUser,
     findUserByID,
@@ -128,4 +146,6 @@ module.exports = {
     updateFolderForId,
     uploadFile,
     getFilesForFolder,
+    deleteFileForId,
+    getFileForId,
 }
