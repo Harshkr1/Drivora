@@ -110,10 +110,19 @@ async function downloadFile(request, response) {
     }
 }
 
+async function deleteFilesForFolderId(folderId) {
+    try {
+        const files = await db.deleteFilesForFolderId(folderId);
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
 module.exports = {
     deleteFile,
     uploadFile,
     getUploadPage,
     downloadFile,
     storage,
+    deleteFilesForFolderId,
 }

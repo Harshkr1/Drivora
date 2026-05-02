@@ -3,9 +3,9 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const fs = require("fs");
 const path = require("path");
+
 const multer = require('multer')
-
-
+const { deleteFilesForFolderId } = require("./fileController.js");
 
 async function showFolderPage(request, response) {
     if (!request.isAuthenticated()) {
@@ -58,6 +58,20 @@ async function deleteFolder(request, response) {
     try {
         const folderId = request.params.folderId;
         console.log("Folder ID is" + folderId);
+        await deleteFilesForFolderId(parseInt(folderId));
+        const userId = response.locals.currentUser.id;
+        const folderPath = path.join(
+            "uploads",
+            `user_${userId}`,
+            `folder_${folderId}`
+        );
+        fs.rmdir(folderPath, { recursive: true, force: true }, (err) => {
+            if (err) {
+                console.log("File not found on disk, continuing...");
+            } else {
+                console.log("File deleted from disk:", folderPath);
+            }
+        });
         await db.deleteFolderForId(parseInt(folderId));
         return response.redirect("/folder");
     } catch (error) {
