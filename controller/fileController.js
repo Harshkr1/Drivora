@@ -70,7 +70,9 @@ async function uploadFile(request, response) {
         const sizeInMb = size / (1024 * 1024);
         console.log(fileName, orignalName, folderId, destination, sizeInMb.toFixed(2));
         await db.uploadFile(fileName, orignalName, folderId, destination, parseFloat(sizeInMb.toFixed(2)));
-        return response.redirect("/folder");
+        const folder = await db.getFolderForId(folderId);
+        const files = await db.getFilesForFolder(folderId);
+        return response.render("folder", { folder: folder, files: files });
     } catch (error) {
         console.log(error);
         throw new Error(error);
