@@ -52,7 +52,7 @@ async function deleteFile(request, response) {
             console.log("File not found on disk, continuing...");
         }
         await db.deleteFileForId(parseInt(fileId));
-        return response.redirect("/folder");
+        return response.redirect(`/folder?id=${file.folder_id}`);
     } catch (error) {
         console.log(error);
         throw new Error(error);

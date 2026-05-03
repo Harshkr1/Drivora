@@ -1,10 +1,10 @@
 const express = require("express");
 const indexRouter = express.Router();
-const { showSignUpForm, createNewUser, showLoginPage, logIn, showIndexPage, logOut, showAddMessagePage, addNewMessage, showUpdateMemberShipForm, updateMembershipStatus, deleteMessage, showUpdateMessagePage, updateMessage } = require("../controller/indexController.js");
+const { showSignUpForm, createNewUser, showLoginPage, logIn, showIndexPage, showLandingPage, logOut, showAddMessagePage, addNewMessage, showUpdateMemberShipForm, updateMembershipStatus, deleteMessage, showUpdateMessagePage, updateMessage } = require("../controller/indexController.js");
 const { customValidator } = require("../controller/formValidator.js");
 const passport = require("passport");
 
-indexRouter.get("/", showIndexPage);
+indexRouter.get("/", showLandingPage);
 
 indexRouter.get("/sign-up", showSignUpForm);
 indexRouter.post("/sign-up", customValidator /* custom validator middleware for validating the form field */, createNewUser);

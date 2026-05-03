@@ -24,6 +24,13 @@ async function showIndexPage(request, response) {
     return await loadIndexPage(request, response);
 }
 
+async function showLandingPage(request, response) {
+    if (request.isAuthenticated()) {
+        return loadIndexPage(request, response);
+    }
+    return showLoginPage(request, response);
+}
+
 async function createNewUser(request, response) {
     const firstName = request.body.firstName;
     const lastName = request.body.lastName;
@@ -33,7 +40,7 @@ async function createNewUser(request, response) {
         const hashedPassword = await bcrypt.hash(password, 10 /* saltLength */)
         const user = await db.addUser(firstName, lastName, username, hashedPassword);
         console.log("USER CREATED:" + user);
-        response.render("log-in");
+        return response.render("log-in");
     } catch (error) {
         throw new Error(error);
     }
@@ -69,4 +76,5 @@ module.exports = {
     logIn,
     showIndexPage,
     logOut,
+    showLandingPage,
 }
