@@ -3,20 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
     <title>Upload File</title>
   </head>
 
   <body>
-      <%- include('./partials/header')%>
+<body>
+  <%- include('./partials/header')%>
 
-    <form
-      action="/file/upload-file/<%= folder.id%>"
-      method="POST"
-      enctype="multipart/form-data"
-    >
-      <h2>Upload File:</h2>
-      <input type="file" name="file" />
-      <button type="submit">Upload</button>
-    </form>
-  </body>
+  <div class="upload-page">
+    <div class="upload-card">
+
+      <h2>Upload File</h2>
+
+      <form
+        action="/file/upload-file/<%= folder.id %>"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+
+        <label class="file-input">
+          <input type="file" name="file" required />
+          <span>Choose a file</span>
+        </label>
+
+        <button type="submit" class="primary-btn">Upload</button>
+      </form>
+
+    </div>
+  </div>
+</body>
 </html>

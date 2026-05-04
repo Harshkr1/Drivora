@@ -3,19 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
     <title>folders</title>
   </head>
 
-  <body>
-    <%- include('./partials/header')%>
+<body>
+  <%- include('./partials/header')%>
 
-    <a href="/folder/create-folder">create a folder</a>
-   <%if(folders.length==0){%>
-        <h1> No folders Created ! Please create A Folder</h1>
-    <%}else{%>
-        <%for(folder of folders){%>
-            <a href="/folder?id=<%=folder.id%>"><h1><%=folder.folder_name%></h1></a>
-        <%}%>
-    <%}%>
-  </body>
+  <div class="folders-page">
+    <div class="folders-container">
+
+      <div class="folders-header">
+        <h2>Your Folders</h2>
+        <a href="/folder/create-folder" class="primary">+ New Folder</a>
+      </div>
+
+      <% if (folders.length == 0) { %>
+        <p class="empty">No folders created yet 🚀</p>
+      <% } else { %>
+        <div class="folders-grid">
+          <% for (folder of folders) { %>
+            <a href="/folder?id=<%= folder.id %>" class="folder-card">
+              <div class="folder-icon">📁</div>
+              <div class="folder-name"><%= folder.folder_name %></div>
+            </a>
+          <% } %>
+        </div>
+      <% } %>
+
+    </div>
+  </div>
+</body>
 </html>

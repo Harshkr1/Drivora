@@ -1,0 +1,936 @@
+/* ================= GLOBAL RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background: #f8f9fa;
+  color: #202124;
+}
+
+/* ================= NAVBAR ================= */
+nav {
+  background: #ffffff;
+  border-bottom: 1px solid #dadce0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* INNER CONTAINER */
+nav > div {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 24px;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+nav a[href="/"] {
+  font-size: 20px;
+  font-weight: 500;
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+#collapseMenu {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex !important;
+}
+
+/* MENU LIST */
+nav ul {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+/* MENU LINKS */
+nav ul li a {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #3c4043;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: 0.2s ease;
+}
+
+nav ul li a:hover {
+  background: #f1f3f4;
+  color: #1a73e8;
+}
+
+/* RIGHT SIDE */
+nav .flex.items-center {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* LOGOUT BUTTON */
+nav a[href="/log-out"] {
+  background: #1a73e8;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+nav a[href="/log-out"]:hover {
+  background: #1557b0;
+}
+
+/* ================= REMOVE TAILWIND CONFLICTS ================= */
+#collapseMenu {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  box-shadow: none !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Disable dark mode overrides */
+.dark {
+  all: unset;
+}
+/* =========================
+   RESET + GLOBAL STYLES
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", "Roboto", sans-serif;
+  background-color: #f6f8fc;
+  color: #202124;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+.home-page {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+/* =========================
+   HEADER (assumed partial)
+========================= */
+header {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 12px 20px;
+}
+
+header .nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 20px;
+  color: #1a73e8;
+  font-weight: 600;
+}
+
+/* =========================
+   HOME CONTENT
+========================= */
+.home-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+  min-height: calc(100vh - 64px); /* subtract navbar height */
+}
+
+/* =========================
+   TEXT STYLING
+========================= */
+.home-content h2 {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1a73e8;
+  margin-bottom: 10px;
+}
+
+.home-content p {
+  font-size: 18px;
+  color: #5f6368;
+  margin-bottom: 25px;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+.actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* PRIMARY BUTTON */
+.actions a:first-child {
+  background-color: #1a73e8;
+  color: #ffffff;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.actions a:first-child:hover {
+  background-color: #1558c0;
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+}
+
+/* SECONDARY BUTTON */
+.actions a:last-child {
+  background-color: #ffffff;
+  color: #1a73e8;
+  padding: 12px 22px;
+  border-radius: 8px;
+  border: 1px solid #d2e3fc;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.actions a:last-child:hover {
+  background-color: #e8f0fe;
+}
+
+/* =========================
+   LOGIN BUTTON (NO USER)
+========================= */
+.home-content > a {
+  background-color: #1a73e8;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.home-content > a:hover {
+  background-color: #1558c0;
+}
+/* =========================
+   FOLDER PAGE
+========================= */
+
+.folder-page {
+  min-height: calc(100vh - 64px); /* minus navbar */
+  background: #f6f8fc;
+  padding: 30px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.folder-container {
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* HEADER */
+.folder-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.folder-header h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #1a73e8;
+}
+
+/* ACTION BUTTONS */
+.folder-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.folder-actions a {
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #d2e3fc;
+  color: #1a73e8;
+  background: #fff;
+  transition: 0.2s ease;
+}
+
+.folder-actions a:hover {
+  background: #e8f0fe;
+}
+
+/* PRIMARY BUTTON */
+.folder-actions .primary {
+  background: #1a73e8;
+  color: white;
+  border: none;
+}
+
+.folder-actions .primary:hover {
+  background: #1558c0;
+}
+
+/* DANGER BUTTON */
+.folder-actions .danger {
+  color: #d93025;
+  border-color: #f1b5b0;
+}
+
+.folder-actions .danger:hover {
+  background: #fce8e6;
+}
+
+/* FILE GRID */
+.files-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* EMPTY STATE */
+.empty {
+  color: #5f6368;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 40px;
+}
+.file-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 16px;
+  transition: 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.file-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #d2e3fc;
+}
+
+/* FILE NAME */
+.file-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #202124;
+
+  /* truncate long names */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* META INFO */
+.file-meta {
+  font-size: 13px;
+  color: #5f6368;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ACTIONS */
+.file-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.file-actions a {
+  font-size: 13px;
+  color: #1a73e8;
+  font-weight: 500;
+}
+
+.file-actions a:hover {
+  text-decoration: underline;
+}
+
+/* DELETE BUTTON */
+.file-actions .danger {
+  color: #d93025;
+}
+
+/* =========================
+   FOLDERS PAGE
+========================= */
+
+.folders-page {
+  min-height: calc(100vh - 64px);
+  background: #f6f8fc;
+  padding: 30px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.folders-container {
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* HEADER */
+.folders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.folders-header h2 {
+  font-size: 24px;
+  color: #1a73e8;
+  font-weight: 600;
+}
+
+/* NEW FOLDER BUTTON */
+.folders-header .primary {
+  background: #1a73e8;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.folders-header .primary:hover {
+  background: #1558c0;
+}
+
+/* GRID */
+.folders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 18px;
+}
+
+/* FOLDER CARD */
+.folder-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.folder-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #d2e3fc;
+}
+
+/* ICON */
+.folder-icon {
+  font-size: 40px;
+}
+
+/* NAME */
+.folder-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #202124;
+
+  /* truncate long names */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* EMPTY STATE */
+.empty {
+  text-align: center;
+  margin-top: 40px;
+  color: #5f6368;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .folders-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .folders-header .primary {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .folders-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+/* =========================
+   CREATE FOLDER PAGE
+========================= */
+
+.create-folder-page {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f6f8fc;
+  padding: 20px;
+}
+
+/* CARD */
+.create-folder-card {
+  background: #ffffff;
+  padding: 30px 25px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* TITLE */
+.create-folder-card h2 {
+  margin-bottom: 20px;
+  color: #1a73e8;
+  font-weight: 600;
+}
+
+/* INPUT */
+.create-folder-card input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 16px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.create-folder-card input:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.15);
+}
+
+/* BUTTON */
+.create-folder-card button {
+  width: 100%;
+  padding: 12px;
+  background: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.create-folder-card button:hover {
+  background: #1558c0;
+}
+/* =========================
+   AUTH (LOGIN / SIGNUP)
+========================= */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f6f8fc;
+  padding: 20px;
+}
+
+/* CARD */
+.auth-card {
+  background: #ffffff;
+  padding: 30px 25px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* TITLE */
+.auth-card h2 {
+  margin-bottom: 20px;
+  color: #1a73e8;
+  font-weight: 600;
+}
+
+/* INPUTS */
+.auth-card input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.auth-card input:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.15);
+}
+
+/* BUTTON */
+.primary-btn {
+  width: 100%;
+  padding: 12px;
+  background: #1a73e8;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 5px;
+}
+
+.primary-btn:hover {
+  background: #1558c0;
+}
+
+/* FOOTER */
+.auth-footer {
+  margin-top: 18px;
+}
+
+.auth-footer p {
+  font-size: 14px;
+  color: #5f6368;
+  margin-bottom: 8px;
+}
+
+/* SIGN UP BUTTON */
+.secondary-btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border: 1px solid #d2e3fc;
+  border-radius: 8px;
+  color: #1a73e8;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.secondary-btn:hover {
+  background: #e8f0fe;
+}
+
+/* =========================
+   UPLOAD FILE PAGE
+========================= */
+
+.upload-page {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f6f8fc;
+  padding: 20px;
+}
+
+/* CARD */
+.upload-card {
+  background: #ffffff;
+  padding: 30px 25px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* TITLE */
+.upload-card h2 {
+  margin-bottom: 20px;
+  color: #1a73e8;
+  font-weight: 600;
+}
+
+/* FILE INPUT (CUSTOM STYLE) */
+.file-input {
+  display: block;
+  border: 2px dashed #d2e3fc;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: 0.2s;
+}
+
+.file-input:hover {
+  background: #e8f0fe;
+}
+
+/* HIDE DEFAULT INPUT */
+.file-input input {
+  display: none;
+}
+
+/* TEXT */
+.file-input span {
+  color: #5f6368;
+  font-size: 14px;
+}
+
+/* BUTTON */
+.primary-btn {
+  width: 100%;
+  padding: 12px;
+  background: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.primary-btn:hover {
+  background: #1558c0;
+}
+
+/* =========================
+   UPDATE FOLDER PAGE
+========================= */
+
+.update-folder-page {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f6f8fc;
+  padding: 20px;
+}
+
+/* CARD */
+.update-folder-card {
+  background: #ffffff;
+  padding: 30px 25px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* TITLE */
+.update-folder-card h2 {
+  margin-bottom: 20px;
+  color: #1a73e8;
+  font-weight: 600;
+}
+
+/* INPUT */
+.update-folder-card input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 16px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.update-folder-card input:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.15);
+}
+
+/* BUTTON */
+.primary-btn {
+  width: 100%;
+  padding: 12px;
+  background: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.primary-btn:hover {
+  background: #1558c0;
+} 
+/* =========================
+   RESPONSIVENESS
+========================= */
+
+/* TABLETS */
+@media (max-width: 768px) {
+  .home-content {
+    padding: 30px 16px;
+  }
+
+  .home-content h2 {
+    font-size: 26px;
+  }
+
+  .home-content p {
+    font-size: 16px;
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .actions a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  header {
+    padding: 10px 15px;
+  }
+
+  header h1 {
+    font-size: 18px;
+  }
+
+  .home-content h2 {
+    font-size: 22px;
+  }
+
+  .home-content p {
+    font-size: 14px;
+  }
+
+  .home-content {
+    padding: 20px 12px;
+  }
+
+  .actions a {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  nav > div {
+    padding: 0 16px;
+  }
+
+  nav ul {
+    gap: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  nav {
+    height: auto;
+    padding: 10px 0;
+  }
+
+  nav > div {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* Menu below */
+  #collapseMenu {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  nav ul {
+    gap: 16px;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  nav ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  nav ul li a {
+    font-size: 14px;
+  }
+
+  /* Logout aligned right */
+  nav .flex.items-center {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  nav a[href="/"] {
+    font-size: 18px;
+  }
+
+  nav a[href="/log-out"] {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+}

@@ -1,9 +1,15 @@
-<body>
-  <h1><%=file.file_orignal_name%></h1>
-  <ul>
-    <li><%=file.size%></li>
-    <li><%=file.created_at %></li>
-    <li><a href="/file/delete-file?id=<%=file.id%>">delete this file</a></li>
-    <li><a href="/file/download-file/<%= file.id %>">download this file</a></li>
-  </ul>
-</body>
+<div class="file-card">
+  <div class="file-name">
+    <%= file.file_orignal_name %>
+  </div>
+
+  <div class="file-meta">
+    <span><%= file.size %> MB</span>
+    <span><%= file.created_at %></span>
+  </div>
+
+  <div class="file-actions">
+    <a href="/file/download-file/<%= file.id %>">Download</a>
+    <a href="/file/delete-file?id=<%=file.id%>" class="danger">Delete</a>
+  </div>
+</div>

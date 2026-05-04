@@ -3,26 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
     <title>Update <%=folder.name%></title>
   </head>
 
-  <body>
-    <%- include('./partials/header')%>
+ <body>
+  <%- include('./partials/header')%>
 
-    <div>
-      <h1>Update <%=folder.name%></h1>
-      <form action="/folder/update-folder/<%= folder.id%>" method="POST">
+  <div class="update-folder-page">
+    <div class="update-folder-card">
+
+      <h2>Update Folder</h2>
+
+      <form action="/folder/update-folder/<%= folder.id %>" method="POST">
         <input
           type="text"
           name="folderName"
-          placeholder="folderName"
+          placeholder="Enter folder name"
           value="<%= folder.folder_name %>"
           required
         />
-        <div>
-          <button type="submit">Update</button>
-        </div>
+
+        <button type="submit" class="primary-btn">Update Folder</button>
       </form>
+
     </div>
-  </body>
+  </div>
+</body>
 </html>

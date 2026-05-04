@@ -3,25 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
     <title><%=folder.name%>></title>
   </head>
 
-  <body>
-      <%- include('./partials/header')%>
+<body>
+  <%- include('./partials/header')%>
 
-    <h1><%=folder.folder_name%></h1>
-    <a href="/file/upload-file/<%= folder.id%>">Upload a file</a>
-    <a href="/folder/delete-folder/<%= folder.id%>">Delete this folder</a>
-    <a href="/folder/update-folder/<%= folder.id%>">Update folder</a>
+  <div class="folder-page">
+    <div class="folder-container">
 
-    <div>
+      <div class="folder-header">
+        <h1><%= folder.folder_name %></h1>
+
+        <div class="folder-actions">
+          <a href="/file/upload-file/<%= folder.id%>" class="primary">Upload</a>
+          <a href="/folder/update-folder/<%= folder.id%>">Rename</a>
+          <a href="/folder/delete-folder/<%= folder.id%>" class="danger">Delete</a>
+        </div>
+      </div>
+
+      <div class="files-container">
         <% if (files.length === 0) { %>
-            <h1>No files in the folder! Please upload a file</h1>
+          <p class="empty">No files yet. Upload something</p>
         <% } else { %>
-            <% for (let file of files) { %>
-                <%- include('./partials/single_item', { file: file }) %>
-            <% } %>
-        <% } %>   
+          <% for (let file of files) { %>
+            <%- include('./partials/single_item', { file: file }) %>
+          <% } %>
+        <% } %>
+      </div>
+
     </div>
-  </body>
+  </div>
+</body>
 </html>

@@ -3,22 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
   <title>Drivora</title>
 </head>
 
 <body>
-<div>
-      <%- include('./partials/header')%>
-  <% if (user) { %>
-    <h2>Welcome</h2>
-    <p><%= user.first_name %> <%= user.last_name %></p>
-    <a href="/folder/create-folder">create a folder</a>
-    <a href="/folder"> Explore your Folders.</a>
+  <div class="home-page">
+    <%- include('./partials/header')%>
 
-  <% } else { %>
-    <p>Please login</p>
-    <a href="/log-in">Login</a>
-  <% } %>
-</div>
+    <% if (user) { %>
+      <div class="home-content">
+        <h2>Welcome</h2>
+        <p><%= user.first_name %> <%= user.last_name %></p>
+
+        <div class="actions">
+          <a href="/folder/create-folder">Create a folder</a>
+          <a href="/folder">Explore your folders</a>
+        </div>
+      </div>
+
+    <% } else { %>
+      <div class="home-content">
+        <p>Please login</p>
+        <a href="/log-in">Login</a>
+      </div>
+    <% } %>
+  </div>
 </body>
 </html>

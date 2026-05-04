@@ -3,25 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css" />
+    
     <title>Drivora</title>
   </head>
 
-  <body>
-      <%- include('./partials/header')%>
+<body>
+  <%- include('./partials/header')%>
 
-    <div>
-      <h1>Add a folder:</h1>
+  <div class="create-folder-page">
+    <div class="create-folder-card">
+      
+      <h2>Create New Folder</h2>
+
       <form action="/folder/create-folder" method="POST">
         <input
           type="text"
           name="folderName"
-          placeholder="folderName"
+          placeholder="Enter folder name"
           required
         />
-        <div>
-          <button type="submit">Add</button>
-        </div>
+
+        <button type="submit">Create Folder</button>
       </form>
+
     </div>
-  </body>
+  </div>
+</body>
 </html>
