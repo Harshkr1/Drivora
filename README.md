@@ -82,7 +82,7 @@ CLOUDINARY_API_SECRET=your_api_secret
 
 ---
 
-## 🚀 Setup & Installation
+##  Setup & Installation
 
 1. Clone the repo
    git clone https://github.com/Harshkr1/Drivora.git
@@ -102,7 +102,7 @@ CLOUDINARY_API_SECRET=your_api_secret
 
 ---
 
-## 🌍 Deployment (Render)
+##  Deployment (Render)
 
 Build Command:
 npm install && npx prisma generate && npx prisma migrate deploy
