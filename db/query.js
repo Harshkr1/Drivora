@@ -94,7 +94,7 @@ async function updateFolderForId(folder_id, updatedFolderName) {
     return folder;
 }
 
-async function uploadFile(fileName, orignalName, folderId, destination, size) {
+async function uploadFile(fileName, orignalName, folderId, destination, size, public_id) {
     const file = await prisma.file.create({
         data: {
             file_name: fileName,
@@ -102,6 +102,7 @@ async function uploadFile(fileName, orignalName, folderId, destination, size) {
             folder_id: folderId,
             url: destination,
             size: size,
+            public_id: public_id,
         }
     })
     console.log("added file" + file);
@@ -135,6 +136,15 @@ async function deleteFileForId(file_id) {
     return file;
 }
 
+async function getPublicIdForFile(fileId) {
+    const file = await prisma.file.findUnique({
+        where: {
+            id: fileId,
+        }
+    })
+    return file.public_id;
+}
+
 async function deleteFilesForFolderId(folderId) {
     const files = await prisma.file.deleteMany({
         where:
@@ -158,5 +168,6 @@ module.exports = {
     getFilesForFolder,
     deleteFileForId,
     getFileForId,
+    getPublicIdForFile,
     deleteFilesForFolderId,
 }

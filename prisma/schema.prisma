@@ -48,4 +48,5 @@ model file {
   url               String
   size              Float
   created_at        DateTime @default(now())
+  public_id         String   @default("null")
 }

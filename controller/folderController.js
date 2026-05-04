@@ -6,6 +6,13 @@ const path = require("path");
 
 const multer = require('multer')
 const { deleteFilesForFolderId } = require("./fileController.js");
+const cloudinary = require('cloudinary');
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 async function showFolderPage(request, response) {
     if (!request.isAuthenticated()) {
@@ -58,20 +65,11 @@ async function deleteFolder(request, response) {
     try {
         const folderId = request.params.folderId;
         console.log("Folder ID is" + folderId);
-        await deleteFilesForFolderId(parseInt(folderId));
         const userId = response.locals.currentUser.id;
-        const folderPath = path.join(
-            "uploads",
-            `user_${userId}`,
-            `folder_${folderId}`
-        );
-        fs.rmdir(folderPath, { recursive: true, force: true }, (err) => {
-            if (err) {
-                console.log("File not found on disk, continuing...");
-            } else {
-                console.log("File deleted from disk:", folderPath);
-            }
-        });
+        const folderPath = `user_${userId}/folder_${folderId}`;
+        await cloudinary.v2.api.delete_resources_by_prefix(folderPath);
+        await cloudinary.v2.api.delete_folder(folderPath);
+        await deleteFilesForFolderId(parseInt(folderId));
         await db.deleteFolderForId(parseInt(folderId));
         return response.redirect("/folder");
     } catch (error) {
